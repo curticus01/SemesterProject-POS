@@ -81,6 +81,8 @@ public class POS
   {
       subTotal = (total + (total*TAX));
       printReceipt();
+      //reset gui
+      
   }
   //Prints reciept to file and screen
   public void printReceipt()throws IOException
