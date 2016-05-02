@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView id="lstInventory" accessibleText="asdf&#10;fdsfs&#10;bvgh" layoutX="37.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView id="lstInventory" fx:id="listView" accessibleText="asdf&#10;fdsfs&#10;bvgh" layoutX="37.0" layoutY="37.0" onMouseClicked="#getItem" prefHeight="200.0" prefWidth="200.0" />
       <Label id="lblName" layoutX="275.0" layoutY="37.0" text="Name: ">
          <font>
             <Font size="18.0" />
@@ -25,13 +25,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField id="txtQuantity" layoutX="352.0" layoutY="119.0" prefHeight="25.0" prefWidth="48.0" />
-      <Label id="lblSubtotal" layoutX="275.0" layoutY="165.0" text="Subtotal: ">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button id="btnPurchase" layoutX="273.0" layoutY="212.0" mnemonicParsing="false" text="Purchase">
+      <TextField id="txtQuantity" fx:id="qnt" layoutX="352.0" layoutY="119.0" prefHeight="25.0" prefWidth="48.0" />
+      <Button id="btnPurchase" fx:id="addToCart" layoutX="273.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#addItem" text="Add to Cart">
          <font>
             <Font size="18.0" />
          </font>
@@ -41,12 +36,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button id="btnDone" layoutX="275.0" layoutY="297.0" mnemonicParsing="false" text="Finish Transaction">
+      <Button id="btnDone" fx:id="compute" layoutX="275.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#compute" text="Finish Transaction">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="btnFood" layoutX="70.0" layoutY="262.0" mnemonicParsing="false" text="Food" />
-      <Button id="btnClothes" layoutX="157.0" layoutY="262.0" mnemonicParsing="false" text="Clothes" />
+      <Button id="btnFood" fx:id="food" layoutX="70.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#setFood" text="Food" />
+      <Button id="btnClothes" fx:id="clothes" layoutX="157.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#SetClothes" text="Clothes" />
+      <TextField id="txtQuantity" fx:id="subTotal" editable="false" layoutX="352.0" layoutY="166.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField id="txtQuantity" fx:id="price" editable="false" layoutX="352.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField id="txtQuantity" fx:id="name" editable="false" layoutX="352.0" layoutY="38.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField id="txtQuantity" fx:id="total" editable="false" layoutX="102.0" layoutY="314.0" prefHeight="25.0" prefWidth="48.0" />
+      <Button fx:id="bttnSubTotal" layoutX="273.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#subTotal" text="Sub Total" />
    </children>
 </AnchorPane>
