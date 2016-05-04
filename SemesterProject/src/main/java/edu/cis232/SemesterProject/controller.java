@@ -13,14 +13,14 @@ public class controller {
 	
 	
 	
-	ObservableList<Item> foodList = FXCollections.observableArrayList(Inventory.food);
-	ObservableList<Item> clothesList = FXCollections.observableArrayList(Inventory.clothes);
+	ObservableList<String> foodList;
+	ObservableList<String> clothesList;
 	
 	POS p = new POS();
 	Inventory i;
 	
     @FXML
-    private ListView<Item> listView;
+    private ListView<String> listView;
 
     @FXML
     private TextField qnt;
@@ -68,10 +68,7 @@ public class controller {
 
     @FXML
     void addItem() throws Exception{
-    	p.addItem(name.getText(), p.getPrice(name.getText()));
-    	price.setText(String.valueOf(p.getPrice(name.getText())));
-    	
-    	
+    	p.addItem(name.getText(), p.getPrice(name.getText()));  	
     }
 
     @FXML
@@ -80,8 +77,9 @@ public class controller {
     }
 
     @FXML
-    void getItem() {
-    	
+    void getItem() throws Exception{
+    	name.setText(listView.getSelectionModel().getSelectedItem());
+    	price.setText(String.valueOf(p.getPrice(name.getText())));
     }
 
     @FXML
@@ -93,10 +91,20 @@ public class controller {
     	//i.printAllItems();
     	i.printInventory();
     	if(foodbool){
+    		foodList= FXCollections.observableArrayList(Inventory.food.get(0).getName());
+    		for(int i=1; i<Inventory.food.size(); i++){
+    			foodList.add(Inventory.food.get(i).getName());
+    		}
+    		
     		listView.setItems(foodList);
-    		//listView = new ListView<Item>(foodList);
+    		
     	}else if(clothesbool){
-    		//listView = new ListView<String>(clothesList);
+    		clothesList= FXCollections.observableArrayList(Inventory.clothes.get(0).getName());
+    		for(int i=1; i<Inventory.clothes.size(); i++){
+    			clothesList.add(Inventory.clothes.get(i).getName());
+    		}
+    		
+    		listView.setItems(clothesList);
     	}
     }
 
