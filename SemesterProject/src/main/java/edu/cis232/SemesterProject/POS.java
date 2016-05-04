@@ -14,9 +14,10 @@ public class POS
   public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
   private String item;
   public static ArrayList<String> allItems = new ArrayList<String>();
-  private double price,
+  protected double price,
                  total,
-                 subTotal;
+                 subTotal,
+                 quantity;
   private final double TAX;
   public static int itemNumber;
   
@@ -60,12 +61,13 @@ public class POS
   }
   
   //adding an item to the transaction
-  public void addItem(String i, double p)throws IOException
+  public void addItem(String i, double p, double q)throws IOException
   {
+	  quantity = q;
       price = p;
       item = i;
       itemNumber++;
-      total += price;
+      total += (price*quantity);
       
   }
   //get rid of item that is not on inventory

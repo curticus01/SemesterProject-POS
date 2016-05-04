@@ -38,7 +38,7 @@ public class controller {
     private Button clothesBttn;
 
     @FXML
-    private TextField subTotal;
+    private TextField subTotaltxt;
 
     @FXML
     private TextField price;
@@ -68,7 +68,8 @@ public class controller {
 
     @FXML
     void addItem() throws Exception{
-    	p.addItem(name.getText(), p.getPrice(name.getText()));  	
+    	p.addItem(name.getText(), p.getPrice(name.getText()),Double.parseDouble(qnt.getText()));
+    	qnt.setText("1");
     }
 
     @FXML
@@ -84,7 +85,7 @@ public class controller {
 
     @FXML
     void subTotal() {
-
+    	subTotaltxt.setText(String.valueOf(p.total));
     }
     public void showItems(){
     	i = new Inventory();

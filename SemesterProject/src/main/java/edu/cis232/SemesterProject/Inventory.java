@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Inventory 
 {
@@ -18,7 +17,6 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
   public static ArrayList<Item> food = new ArrayList<>();
   public static ArrayList<Item> inventory = new ArrayList<>();
   public static ArrayList<Item> clothes = new ArrayList<>();
-  private String[] allItems;
   private double price;
   private boolean notFound;
   public static POS pos = new POS();
@@ -64,15 +62,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 
 		} catch (Exception ex) {
 			System.out.println("ERROR: " + ex.getMessage());
-		}
-      
-      allItems = new String[food.size()];
-      
-      for(int i =0; i < food.size(); i++)
-      {
-          allItems[i] = food.get(i).getName();
-      }
-      
+		}     
   }
   public void loadClothes()
   {
@@ -102,29 +92,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 
 		} catch (Exception ex) {
 			System.out.println("ERROR: " + ex.getMessage());
-		}
-      
-      allItems = new String[clothes.size()];
-      
-      for(int i =0; i < clothes.size(); i++)
-      {
-          allItems[i] = clothes.get(i).getName();
-      }
-      
-  }
-  
-  public String[] getAllItems()
-  {
-      return allItems;
-  }
-  
-  //prints items availible in inventory
-  public void printAllItems()
-  {
-      for(int i =0; i< inventory.size(); i++)
-      {
-          System.out.println(allItems[i]);
-      }
+		}      
   }
   
   //prints all of inventory including items' values(name, ProdNum, price)
@@ -141,26 +109,16 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
   {
       int i;
       for(i=0; i < inventory.size(); i++)
-      {
-          if((Arrays.asList(allItems).contains(inventory.get(i).getName())) && inventory.get(i).getName().equalsIgnoreCase(item) )
-          {
-              
+      {    	  
+    	  if(inventory.get(i).getName().equalsIgnoreCase(item) ){
+          
               price = inventory.get(i).getPrice();
               System.out.println("Item: " + item);
               System.out.println("Price: " + currency.format(price));
               pos.allItems.add(item);
-              notFound = (Arrays.asList(allItems).contains(inventory.get(i).getName()));
-              
-              
-              /* //Test Location of item
-              System.out.println("\nLocation");
-              System.out.println("i is: " +i);
-              System.out.println("j is: " +j);
-              */
-
-              break;                    
-          }   
-      
+              notFound = true;              
+              break;    
+    	  }      
       }
       checkNotFound(item);
       return price;
