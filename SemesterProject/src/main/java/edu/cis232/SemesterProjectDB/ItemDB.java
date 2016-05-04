@@ -76,49 +76,49 @@ public class ItemDB {
 			stmt.execute("CREATE TABLE Item (" 
 					+ "Description CHAR(25), " 
 					+ "ProdNum CHAR(10) NOT NULL PRIMARY KEY, "
-					+ "Type CHAR(10) "
+					+ "Type CHAR(10), "
 					+ "Price DOUBLE " + ")");
 
 			// Insert row #1.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Cereal', " 
 					+ "'14-002', "
-					+ "Food "
+					+ "'Food', "
 					+ "1.95 )");
 
 			// Insert row #2.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Ground Beef', " 
 					+ "'15-001', "
-					+ "Food "
+					+ "'Food', "
 					+ "7.95 )");
 
 			// Insert row #3.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Steak', " 
 					+ "'15-002', "
-					+ "Food "
+					+ "'Food', "
 					+ "7.95 )");
 
 			// Insert row #4.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Green Pants', " 
-					+ "'15-001', "
-					+ "Clothes "
+					+ "'15-003', "
+					+ "'Clothes', "
 					+ "8.55 )");
 
 			// Insert row #5.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Black T-Shirt', " 
 					+ "'16-001', "
-					+ "Clothes "
+					+ "'Clothes', "
 					+ "9.95 )");
 
 			// Insert row #6.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Red T-Shirt', " 
 					+ "'16-002', "
-					+ "Clothes "
+					+ "'Clothes', "
 					+ "9.95 )");
 
 			System.out.println("Item table created.");

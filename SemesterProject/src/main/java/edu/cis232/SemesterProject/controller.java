@@ -1,18 +1,26 @@
 package edu.cis232.SemesterProject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class controller {
-	public static boolean food = false;
-	public static boolean clothes = false;
+	public static boolean foodbool = false;
+	public static boolean clothesbool = false;
+	
+	
+	
+	ObservableList<Item> foodList = FXCollections.observableArrayList(Inventory.food);
+	ObservableList<Item> clothesList = FXCollections.observableArrayList(Inventory.clothes);
 	
 	POS p = new POS();
+	Inventory i;
 	
     @FXML
-    private ListView<?> listView;
+    private ListView<Item> listView;
 
     @FXML
     private TextField qnt;
@@ -45,10 +53,17 @@ public class controller {
     private Button bttnSubTotal;
 
     
-    
+    //shows all clothes items
     @FXML
     void SetClothes() {
-    	clothes = true;	
+    	clothesbool = true;	
+    	showItems();
+    }
+    //shows all food items
+    @FXML
+    void setFood() {
+    	foodbool = true;
+    	showItems();
     }
 
     @FXML
@@ -70,13 +85,19 @@ public class controller {
     }
 
     @FXML
-    void setFood() {
-    	food = true;
-    }
-
-    @FXML
     void subTotal() {
 
+    }
+    public void showItems(){
+    	i = new Inventory();
+    	//i.printAllItems();
+    	i.printInventory();
+    	if(foodbool){
+    		listView.setItems(foodList);
+    		//listView = new ListView<Item>(foodList);
+    	}else if(clothesbool){
+    		//listView = new ListView<String>(clothesList);
+    	}
     }
 
 }

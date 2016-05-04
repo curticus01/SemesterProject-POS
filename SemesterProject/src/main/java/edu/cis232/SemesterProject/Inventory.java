@@ -15,9 +15,9 @@ public class Inventory
 {
   //declare variables
 public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
-  private ArrayList<Item> food = new ArrayList<>();
-  private ArrayList<Item> inventory = new ArrayList<>();
-  //private ArrayList<Clothes> clothes = new ArrayList<>();
+  public static ArrayList<Item> food = new ArrayList<>();
+  public static ArrayList<Item> inventory = new ArrayList<>();
+  public static ArrayList<Item> clothes = new ArrayList<>();
   private String[] allItems;
   private double price;
   private boolean notFound;
@@ -25,12 +25,12 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
   final String DB_URL = "jdbc:hsqldb:file:ItemDB/Item";
   public Inventory()
   {
-	  if(controller.food = true){
+	  if(controller.foodbool == true){
 		  loadFood();  
 		  inventory = food;
-	  }else if(controller.clothes = true){
-		  //loadClothes();
-		  //inventory = clothes;
+	  }else if(controller.clothesbool == true){
+		  loadClothes();
+		  inventory = clothes;
 	  }
       
   }
@@ -48,7 +48,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 
 			// Create a string with a SELECT statement.
 			String sqlStatement = "SELECT ProdNum, Description, Price FROM Item"
-					+ " WHERE Type LIKE Food";
+					+ " WHERE Type LIKE 'Food'";
 
 			// Send the statement to the DBMS.
 			ResultSet result = stmt.executeQuery(sqlStatement);
@@ -74,6 +74,44 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
       }
       
   }
+  public void loadClothes()
+  {
+
+		try {
+			// Create a connection to the database.
+			Connection conn = DriverManager.getConnection(DB_URL);
+
+			// Create a Statement object.
+			Statement stmt = conn.createStatement();
+
+			// Create a string with a SELECT statement.
+			String sqlStatement = "SELECT ProdNum, Description, Price FROM Item"
+					+ " WHERE Type LIKE 'Clothes'";
+
+			// Send the statement to the DBMS.
+			ResultSet result = stmt.executeQuery(sqlStatement);
+
+			
+			// Display the contents of the result set.
+			while (result.next()) {
+		      clothes.add(new Clothes(result.getString("Description"),result.getString("ProdNum"),result.getDouble("Price")));
+			}
+
+			// Close the connection.
+			conn.close();
+
+		} catch (Exception ex) {
+			System.out.println("ERROR: " + ex.getMessage());
+		}
+      
+      allItems = new String[clothes.size()];
+      
+      for(int i =0; i < clothes.size(); i++)
+      {
+          allItems[i] = clothes.get(i).getName();
+      }
+      
+  }
   
   public String[] getAllItems()
   {
@@ -94,7 +132,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
   {
       for(int i =0; i< inventory.size(); i++)
       {
-          System.out.printf("%s, %s, %f&n", inventory.get(i).getName(),inventory.get(i).getProdNum(),inventory.get(i).getPrice());
+          System.out.printf("%s, %s, %f%n", inventory.get(i).getName(),inventory.get(i).getProdNum(),inventory.get(i).getPrice());
       }
   }
   
