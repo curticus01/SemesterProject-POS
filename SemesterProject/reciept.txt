@@ -1,7 +1,7 @@
 
 StoreMart
-	Cereal                   
-	Steak                    
+	Green Pants              
+	Ground Beef              
 You had 2 items.
-Your total is: $10.49
+Your total is: $17.49
 Thank you for shopping at StoreMart

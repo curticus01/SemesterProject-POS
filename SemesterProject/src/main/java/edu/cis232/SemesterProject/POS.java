@@ -67,7 +67,7 @@ public class POS {
 		quantity = q;
 		price = p;
 		item = i;
-		itemNumber++;
+		itemNumber+=quantity;
 		subTotal += (price * quantity);
 		total = (subTotal + (subTotal * TAX));
 

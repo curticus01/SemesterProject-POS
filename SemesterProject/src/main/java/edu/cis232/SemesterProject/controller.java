@@ -66,8 +66,21 @@ public class controller {
     }
     public void reset(){
     	listView.setItems(null);
-    	foodList = null;
-    	clothesList = null;
+    	try{
+    		if(!foodList.isEmpty() || foodList!=null){
+            	foodList.removeAll();
+        	}else{
+        		foodList = null;
+        	}
+        	if(!clothesList.isEmpty() || clothesList!=null){
+            	clothesList.removeAll();
+        	}else{
+        		clothesList = null;
+        	}
+    	}catch(NullPointerException e){
+    		System.err.print("exception handled");
+    	}
+    	
     	total.setText(null);
     	name.setText(null);
     	price.setText(null);
@@ -93,8 +106,20 @@ public class controller {
     }
 
     @FXML
-    void addItem() throws Exception{
-    	pos.addItem(name.getText(), pos.getPrice(name.getText()),Double.parseDouble(qnt.getText()));
+    void addItem(){
+    	int err = Integer.parseInt(qnt.getText());
+    	if(err<1){
+    		throw new NegativeQuantityException(err);
+    	}
+    	try {
+			pos.addItem(name.getText(), pos.getPrice(name.getText()),Double.parseDouble(qnt.getText()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch(NegativeQuantityException e){
+			System.err.println(e);
+		}catch(Exception e){
+		}
     	qnt.setText("1");
     }
 
