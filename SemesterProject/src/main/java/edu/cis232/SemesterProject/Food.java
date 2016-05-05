@@ -1,32 +1,12 @@
 package edu.cis232.SemesterProject;
+//REQ#4
+//REQ#6
+public class Food extends Item{
 
-public class Food implements Item{
-	String name;
-	String prodNum;
-	double price;
 	
 	public Food(String name, String prodNum, double price){
-		this.name = name;
-		this.prodNum = prodNum;
-		this.price = price;
-	}
-	
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return name;
+		super(name, prodNum, price);
 	}
 
-	@Override
-	public double getPrice() {
-		// TODO Auto-generated method stub
-		return price;
-	}
-
-	@Override
-	public String getProdNum() {
-		// TODO Auto-generated method stub
-		return prodNum;
-	}
 
 }

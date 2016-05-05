@@ -18,8 +18,8 @@ public class App extends Application{
 		
 		Scene scene = new Scene(parent);
 		stage.setScene(scene);
-		
-		stage.setTitle("POS");		
+		//REQ#1
+		stage.setTitle("POS - By Jake Shaw and Curtis Coughenour");		
 		stage.show();
 		
 	}

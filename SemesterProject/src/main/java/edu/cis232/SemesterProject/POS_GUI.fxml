@@ -29,17 +29,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField id="txtQuantity" fx:id="qnt" layoutX="365.0" layoutY="122.0" prefHeight="25.0" prefWidth="48.0" promptText="1" />
+      <TextField id="txtQuantity" fx:id="qnt" layoutX="365.0" layoutY="122.0" prefHeight="25.0" prefWidth="116.0" promptText="1" />
       <Button id="btnPurchase" fx:id="addToCart" layoutX="273.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#addItem" text="Add to Cart">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label id="lblTotal" layoutX="37.0" layoutY="309.0" text="Total: ">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
       <Button id="btnDone" fx:id="compute" layoutX="275.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#compute" text="Finish Transaction">
          <font>
             <Font size="18.0" />
@@ -47,10 +42,16 @@
       </Button>
       <Button id="btnFood" fx:id="foodBttn" layoutX="70.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#setFood" text="Food" />
       <Button id="btnClothes" fx:id="clothesBttn" layoutX="157.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#SetClothes" text="Clothes" />
-      <TextField id="txtQuantity" fx:id="subTotaltxt" editable="false" layoutX="365.0" layoutY="166.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField id="txtQuantity" fx:id="price" editable="false" layoutX="365.0" layoutY="76.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField id="txtQuantity" fx:id="name" layoutX="365.0" layoutY="35.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField id="txtQuantity" fx:id="total" editable="false" layoutX="102.0" layoutY="314.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField id="txtQuantity" fx:id="subTotaltxt" editable="false" layoutX="365.0" layoutY="166.0" prefHeight="25.0" prefWidth="116.0" />
+      <TextField id="txtQuantity" fx:id="price" editable="false" layoutX="365.0" layoutY="76.0" prefHeight="25.0" prefWidth="116.0" />
+      <TextField id="txtQuantity" fx:id="name" layoutX="365.0" layoutY="35.0" prefHeight="25.0" prefWidth="116.0" />
+      <TextField id="txtQuantity" fx:id="total" editable="false" layoutX="102.0" layoutY="314.0" prefHeight="25.0" prefWidth="116.0" />
       <Button fx:id="bttnSubTotal" layoutX="273.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#subTotal" text="Sub Total" />
+      <Label layoutX="49.0" layoutY="344.0" text="Tax: 6%" />
+      <Button fx:id="totalBttn" layoutX="41.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#getTotal" text="Total:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

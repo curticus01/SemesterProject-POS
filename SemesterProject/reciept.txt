@@ -1,0 +1,7 @@
+
+StoreMart
+	Cereal                   
+	Steak                    
+You had 2 items.
+Your total is: $10.49
+Thank you for shopping at StoreMart

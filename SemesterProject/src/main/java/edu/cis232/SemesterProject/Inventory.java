@@ -14,26 +14,24 @@ public class Inventory
 {
   //declare variables
 public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
-  public static ArrayList<Item> food = new ArrayList<>();
-  public static ArrayList<Item> inventory = new ArrayList<>();
-  public static ArrayList<Item> clothes = new ArrayList<>();
+  public ArrayList<Item> food = new ArrayList<>();
+  public ArrayList<Item> inventory = new ArrayList<>();
+  public ArrayList<Item> clothes = new ArrayList<>();
   private double price;
   private boolean notFound;
-  public static POS pos = new POS();
+  public POS pos = new POS(this);
   final String DB_URL = "jdbc:hsqldb:file:ItemDB/Item";
-  public Inventory()
-  {
-	  if(controller.foodbool == true){
-		  loadFood();  
+  
+  public void switchInventory(String s){
+	  if(s.equalsIgnoreCase("food")){
+		  loadFood();
 		  inventory = food;
-	  }else if(controller.clothesbool == true){
+	  }else if(s.equalsIgnoreCase("clothes")){
 		  loadClothes();
 		  inventory = clothes;
 	  }
-      
   }
-  
-  //Setter for inventory
+//REQ#8
   public void loadFood()
   {
 
@@ -115,7 +113,6 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
               price = inventory.get(i).getPrice();
               System.out.println("Item: " + item);
               System.out.println("Price: " + currency.format(price));
-              pos.allItems.add(item);
               notFound = true;              
               break;    
     	  }      
@@ -139,8 +136,6 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
       {
           System.out.println("Item Not Found: " + item);
           price = 0;
-          pos.itemNumber--;
-          pos.allItems.remove(item);
           pos.voidItem(item, price);
           
           notFound = false;
