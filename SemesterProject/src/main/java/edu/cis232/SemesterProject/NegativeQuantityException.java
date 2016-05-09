@@ -5,6 +5,7 @@ public class NegativeQuantityException extends IllegalArgumentException {
 	/**
 	 * thrown when the quantity of an item is below 1
 	 */
+	//REQ#12
 	private static final long serialVersionUID = 1L;
 
 	public NegativeQuantityException(int q){

@@ -77,8 +77,9 @@ public class controller {
         	}else{
         		clothesList = null;
         	}
+        	//REQ#11
     	}catch(NullPointerException e){
-    		System.err.print("exception handled");
+    		System.err.print("exception handled\n");
     	}
     	
     	total.setText(null);
@@ -116,6 +117,7 @@ public class controller {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			//REQ#12
 		}catch(NegativeQuantityException e){
 			System.err.println(e);
 		}catch(Exception e){

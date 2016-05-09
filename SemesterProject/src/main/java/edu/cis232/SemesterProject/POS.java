@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class POS {
 	public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 	private String item;
-	public static ArrayList<String> allItems = new ArrayList<String>();
+	public static ArrayList<AllItems> allItems = new ArrayList<AllItems>();
 	protected double price, total, subTotal, quantity;
 	private final double TAX;
 	public static int itemNumber;
@@ -38,7 +38,9 @@ public class POS {
 		item = "";
 		price = 0;
 		total = 0;
+		subTotal = 0;
 		itemNumber = 0;
+		allItems.clear();
 	}
 
 	// Setters
@@ -63,7 +65,7 @@ public class POS {
 
 	// adding an item to the transaction
 	public void addItem(String i, double p, double q) throws IOException {
-		allItems.add(i);
+		allItems.add(new AllItems(i,q));
 		quantity = q;
 		price = p;
 		item = i;
@@ -97,8 +99,7 @@ public class POS {
 		sb.append("StoreMart\n");
 		// System.out.println("StoreMart");
 		for (int i = 0; i < allItems.size(); i++) {
-			System.out.print("\t" + allItems.get(i) + "\n");
-			sb.append("\t" + allItems.get(i) + "\n");
+			sb.append(String.format("%-5.0f %s%n",allItems.get(i).getQuantity(), allItems.get(i).getItem()));
 		}
 		// print reciept to file
 		sb.append("You had " + itemNumber + " items.\n");

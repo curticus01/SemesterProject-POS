@@ -14,6 +14,8 @@ public class Inventory
 {
   //declare variables
 public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
+
+  //REQ#10
   public ArrayList<Item> food = new ArrayList<>();
   public ArrayList<Item> inventory = new ArrayList<>();
   public ArrayList<Item> clothes = new ArrayList<>();
@@ -43,7 +45,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 			Statement stmt = conn.createStatement();
 
 			// Create a string with a SELECT statement.
-			String sqlStatement = "SELECT ProdNum, Description, Price FROM Item"
+			String sqlStatement = "SELECT * FROM Item"
 					+ " WHERE Type LIKE 'Food'";
 
 			// Send the statement to the DBMS.
@@ -52,7 +54,8 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 			
 			// Display the contents of the result set.
 			while (result.next()) {
-		      food.add(new Food(result.getString("Description"),result.getString("ProdNum"),result.getDouble("Price")));
+			//REQ#10
+		      food.add(new Food(result.getString("Description"),result.getString("ProdNum"),result.getDouble("Price"), result.getBoolean("Par")));
 			}
 
 			// Close the connection.
@@ -82,6 +85,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 			
 			// Display the contents of the result set.
 			while (result.next()) {
+			//REQ#10
 		      clothes.add(new Clothes(result.getString("Description"),result.getString("ProdNum"),result.getDouble("Price")));
 			}
 
@@ -111,8 +115,8 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
     	  if(inventory.get(i).getName().equalsIgnoreCase(item) ){
           
               price = inventory.get(i).getPrice();
-              System.out.println("Item: " + item);
-              System.out.println("Price: " + currency.format(price));
+              //System.out.println("Item: " + item);
+              //System.out.println("Price: " + currency.format(price));
               notFound = true;              
               break;    
     	  }      

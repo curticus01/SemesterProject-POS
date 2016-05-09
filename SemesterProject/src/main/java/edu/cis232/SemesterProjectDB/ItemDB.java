@@ -77,49 +77,56 @@ public class ItemDB {
 					+ "Description CHAR(25), " 
 					+ "ProdNum CHAR(10) NOT NULL PRIMARY KEY, "
 					+ "Type CHAR(10), "
-					+ "Price DOUBLE " + ")");
+					+ "Price DOUBLE, "
+					+ "Par BOOLEAN)");
 
 			// Insert row #1.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Cereal', " 
 					+ "'14-002', "
 					+ "'Food', "
-					+ "1.95 )");
+					+ "1.95, "
+					+ "'FALSE' )");
 
 			// Insert row #2.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Ground Beef', " 
 					+ "'15-001', "
 					+ "'Food', "
-					+ "7.95 )");
+					+ "7.95, "
+					+ "'TRUE' )");
 
 			// Insert row #3.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Steak', " 
 					+ "'15-002', "
 					+ "'Food', "
-					+ "7.95 )");
+					+ "7.95, "
+					+ "'TRUE' )");
 
 			// Insert row #4.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Green Pants', " 
 					+ "'15-003', "
 					+ "'Clothes', "
-					+ "8.55 )");
+					+ "8.55, "
+					+ "'FALSE' )");
 
 			// Insert row #5.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Black T-Shirt', " 
 					+ "'16-001', "
 					+ "'Clothes', "
-					+ "9.95 )");
+					+ "9.95, "
+					+ "'FALSE' )");
 
 			// Insert row #6.
 			stmt.execute("INSERT INTO Item VALUES ( " 
 					+ "'Red T-Shirt', " 
 					+ "'16-002', "
 					+ "'Clothes', "
-					+ "9.95 )");
+					+ "9.95, "
+					+ "'FALSE' )");
 
 			System.out.println("Item table created.");
 		} catch (SQLException ex) {
