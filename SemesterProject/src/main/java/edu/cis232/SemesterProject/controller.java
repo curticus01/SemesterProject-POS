@@ -115,7 +115,6 @@ public class controller {
     	try {
 			pos.addItem(name.getText(), pos.getPrice(name.getText()),Double.parseDouble(qnt.getText()));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			//REQ#12
 		}catch(NegativeQuantityException e){

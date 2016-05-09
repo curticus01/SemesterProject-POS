@@ -7,7 +7,6 @@ public class Food extends Item{
 	public Food(String name, String prodNum, double price, boolean par){
 		super(name, prodNum, price);
 		parishable = par;
-		
 	}
 
 
