@@ -1,6 +1,0 @@
-
-StoreMart
-4     Black T-Shirt            
-You had 4 items.
-Your total is: $42.19
-Thank you for shopping at StoreMart
