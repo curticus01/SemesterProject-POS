@@ -62,7 +62,8 @@ public class controller {
     void initialize(){
     	qnt.setText("1");
     	inventory= new Inventory();
-    	 pos = new POS(inventory);
+    	pos = new POS(inventory);
+    	addToCart.setVisible(false);
     }
     public void reset(){
     	listView.setItems(null);
@@ -97,6 +98,7 @@ public class controller {
     	clothesbool = true;	
     	foodbool = false;    	
     	showItems();
+    	addToCart.setVisible(true);
     }
     //shows all food items
     @FXML
@@ -104,6 +106,7 @@ public class controller {
     	foodbool = true;
     	clothesbool = false;    	
     	showItems();
+    	addToCart.setVisible(true);
     }
 
     @FXML
@@ -113,7 +116,10 @@ public class controller {
     		throw new NegativeQuantityException(err);
     	}
     	try {
-			pos.addItem(name.getText(), pos.getPrice(name.getText()),Double.parseDouble(qnt.getText()));
+    		if(name.getText()!= null){
+    			pos.addItem(name.getText(), pos.getPrice(name.getText()),Double.parseDouble(qnt.getText()));	
+    		}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			//REQ#12
