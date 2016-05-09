@@ -80,7 +80,10 @@ public class POS {
 		price = 0;
 		price -= p;
 		item = i;
-		itemNumber--;
+		if(i != null)
+		{
+			itemNumber--;
+		}
 		allItems.remove(i);
 	}
 
