@@ -117,7 +117,7 @@ public class controller {
 			throw new NegativeQuantityException(err);
 		}
 		try {
-			if (name.getText() != null) {
+			if (name.getText() != null && pos.getPrice(name.getText()) != 0) {
 				pos.addItem(name.getText(), pos.getPrice(name.getText()), Double.parseDouble(qnt.getText()));
 			}
 
