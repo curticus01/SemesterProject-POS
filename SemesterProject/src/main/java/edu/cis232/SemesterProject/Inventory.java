@@ -86,7 +86,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 			// Display the contents of the result set.
 			while (result.next()) {
 			//REQ#10
-		      clothes.add(new Clothes(result.getString("Description").trim(),result.getString("ProdNum"),result.getDouble("Price")));
+		      clothes.add(new Clothes(result.getString("Description").trim(),result.getString("ProdNum").trim(),result.getDouble("Price")));
 			}
 
 			// Close the connection.
@@ -102,7 +102,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
   {
       for(int i =0; i< inventory.size(); i++)
       {
-          System.out.printf("%s, %s, %f%n", inventory.get(i).getName(),inventory.get(i).getProdNum(),inventory.get(i).getPrice());
+          System.out.printf("%s, %s, %f%n", inventory.get(i).getName(),inventory.get(i).getProdNum().trim(),inventory.get(i).getPrice());
       }
   }
   
