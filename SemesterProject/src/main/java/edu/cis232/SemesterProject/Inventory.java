@@ -55,7 +55,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 			// Display the contents of the result set.
 			while (result.next()) {
 			//REQ#10
-		      food.add(new Food(result.getString("Description"),result.getString("ProdNum"),result.getDouble("Price"), result.getBoolean("Par")));
+		      food.add(new Food(result.getString("Description").trim(),result.getString("ProdNum"),result.getDouble("Price"), result.getBoolean("Par")));
 			}
 
 			// Close the connection.
@@ -86,7 +86,7 @@ public static DecimalFormat currency = new DecimalFormat("$#,##0.00");
 			// Display the contents of the result set.
 			while (result.next()) {
 			//REQ#10
-		      clothes.add(new Clothes(result.getString("Description"),result.getString("ProdNum"),result.getDouble("Price")));
+		      clothes.add(new Clothes(result.getString("Description").trim(),result.getString("ProdNum"),result.getDouble("Price")));
 			}
 
 			// Close the connection.
